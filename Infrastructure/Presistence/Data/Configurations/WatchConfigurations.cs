@@ -14,6 +14,8 @@ namespace Presistence.Data.Configurations
         public void Configure(EntityTypeBuilder<Watch> builder)
         {
             builder.Property(w=>w.Price).HasColumnType("decimal(18,2)");
+            builder.Property(C => C.OriginalPrice).HasColumnType("decimal(18,2)");
+
         }
     }
 }

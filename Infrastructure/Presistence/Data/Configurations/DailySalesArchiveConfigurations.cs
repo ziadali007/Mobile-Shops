@@ -13,7 +13,8 @@ namespace Presistence.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<DailySalesArchive> builder)
         {
-            builder.Property(DSA => DSA.Price).HasColumnType("decimal(18,2)");
+            builder.Property(DSA => DSA.OriginalPrice).HasColumnType(typeName: "decimal(18,2)");
+            builder.Property(DSA => DSA.Price).HasColumnType(typeName: "decimal(18,2)");
             builder.Property(DSA => DSA.Total).HasColumnType("decimal(18,2)");
         }
     }

@@ -13,6 +13,8 @@ namespace Presistence.Data.Configurations
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<HeadPhone> builder)
         {
             builder.Property(H => H.Price).HasColumnType("decimal(18,2)");
+            builder.Property(C => C.OriginalPrice).HasColumnType("decimal(18,2)");
+
         }
     }
 }

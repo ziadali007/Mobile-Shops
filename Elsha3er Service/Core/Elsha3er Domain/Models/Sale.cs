@@ -10,6 +10,7 @@ namespace Elsha3er_Domain.Models
     {
         public string Type { get; set; }
 
+        public decimal? OriginalPrice { get; set; }
         public decimal Price { get; set; }
 
         public decimal Total { get; set; }  // mapped
@@ -18,6 +19,7 @@ namespace Elsha3er_Domain.Models
         {
             Total = Quantity * Price;
         }
+        public string? Notes { get; set; } = string.Empty;
 
         public DateTime Time { get; set; } = DateTime.Now;
 

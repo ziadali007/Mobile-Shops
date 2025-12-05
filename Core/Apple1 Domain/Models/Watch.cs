@@ -10,6 +10,8 @@ namespace Apple1_Domain.Models
     {
        
         public decimal Price { get; set; }
+        public decimal? OriginalPrice { get; set; }
+
         public string Type { get; set; }
         
     }
