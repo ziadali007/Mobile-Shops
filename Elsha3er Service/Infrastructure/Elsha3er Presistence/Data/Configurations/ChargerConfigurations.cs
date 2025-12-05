@@ -14,6 +14,8 @@ namespace Elsha3er_Presistence.Data.Configurations
         public void Configure(EntityTypeBuilder<Charger> builder)
         {
             builder.Property(C => C.Price).HasColumnType("decimal(18,2)");
+            builder.Property(C => C.OriginalPrice).HasColumnType("decimal(18,2)");
+
         }
     }
 }

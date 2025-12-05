@@ -12,12 +12,16 @@ namespace Apple1_Domain.Models
 
         public decimal Price { get; set; }
 
+        public decimal? OriginalPrice { get; set; }
+
         public decimal Total { get; set; }  // mapped
 
         public void CalculateTotal()
         {
             Total = Quantity * Price;
         }
+
+        public string? Notes { get; set; } = string.Empty;
 
         public DateTime Time { get; set; } = DateTime.Now;
 

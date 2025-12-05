@@ -14,6 +14,7 @@ namespace Shared
 
         public string Type { get; set; }
         public decimal Total { get; set; }  // mapped
+        public string? Notes { get; set; } = string.Empty;
         public DateTime Time { get; set; } = DateTime.Now;
 
     }

@@ -29,7 +29,7 @@ namespace Presentation
             var archive = await serviceManager.ArchiveDailySalesService.ArchiveAsync();
             if (archive == null || !archive.Any())
                 return NotFound("No sales found to archive for today.");
-            return Ok(archive);
+            return Ok("Sales Archived Successfully");
         }
 
         [HttpGet]

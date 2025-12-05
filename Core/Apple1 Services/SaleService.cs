@@ -43,10 +43,12 @@ namespace Apple1_Services
                     {
                         Name = cover.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = cover.OriginalPrice,
                         Price = cover.Price,
                         Time = DateTime.UtcNow,
                         Type = "cover",
-                        ProductId = cover.Id
+                        ProductId = cover.Id,
+                        Notes = dto.Notes
                     };
                     unitOfWork.GetRepository<Cover>().Update(cover);
                     break;
@@ -59,10 +61,13 @@ namespace Apple1_Services
                     {
                         Name = screen.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = screen.OriginalPrice,
                         Price = screen.Price,
                         Time = DateTime.UtcNow,
                         Type = "screen",
-                        ProductId = screen.Id
+                        ProductId = screen.Id,
+                        Notes = dto.Notes
+
                     };
                     unitOfWork.GetRepository<Screen>().Update(screen);
                     break;
@@ -75,10 +80,13 @@ namespace Apple1_Services
                     {
                         Name = charger.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = charger.OriginalPrice,
                         Price = charger.Price,
                         Time = DateTime.UtcNow,
                         Type = "charger",
-                        ProductId = charger.Id
+                        ProductId = charger.Id,
+                        Notes = dto.Notes
+
                     };
                     unitOfWork.GetRepository<Charger>().Update(charger);
                     break;
@@ -91,10 +99,13 @@ namespace Apple1_Services
                     {
                         Name = headphone.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = headphone.OriginalPrice,
                         Price = headphone.Price,
                         Time = DateTime.UtcNow,
                         Type = "headphone",
-                        ProductId = headphone.Id
+                        ProductId = headphone.Id,
+                        Notes = dto.Notes
+
                     };
                     unitOfWork.GetRepository<HeadPhone>().Update(headphone);
                     break;
@@ -107,10 +118,13 @@ namespace Apple1_Services
                     {
                         Name = watch.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = watch.OriginalPrice,
                         Price = watch.Price,
                         Time = DateTime.UtcNow,
                         Type = "watch",
-                        ProductId = watch.Id
+                        ProductId = watch.Id,
+                        Notes = dto.Notes
+
                     };
                     unitOfWork.GetRepository<Watch>().Update(watch);
                     break;
@@ -123,10 +137,13 @@ namespace Apple1_Services
                     {
                         Name = cable.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = cable.OriginalPrice,
                         Price = cable.Price,
                         Time = DateTime.UtcNow,
                         Type = "cable",
-                        ProductId = cable.Id
+                        ProductId = cable.Id,
+                        Notes = dto.Notes
+
                     };
                     unitOfWork.GetRepository<Cable>().Update(cable);
                     break;
@@ -139,10 +156,13 @@ namespace Apple1_Services
                     {
                         Name = Other.Name,
                         Quantity = dto.Quantity,
+                        OriginalPrice = Other.OriginalPrice,
                         Price = Other.Price,
                         Time = DateTime.UtcNow,
                         Type = "others",
-                        ProductId = Other.Id
+                        ProductId = Other.Id,
+                        Notes = dto.Notes
+
                     };
                     unitOfWork.GetRepository<Others>().Update(Other);
                     break;

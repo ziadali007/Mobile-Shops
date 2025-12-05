@@ -12,5 +12,8 @@ namespace Shared
         public string ProductType { get; set; }   
         public int Quantity { get; set; }
 
+        public string? Notes { get; set; } = string.Empty;
+
+
     }
 }

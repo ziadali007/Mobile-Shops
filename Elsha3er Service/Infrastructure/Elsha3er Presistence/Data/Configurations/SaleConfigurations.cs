@@ -14,6 +14,7 @@ namespace Elsha3er_Presistence.Data.Configurations
         public void Configure(EntityTypeBuilder<Sale> builder)
         {
            builder.HasKey(S => S.Id);
+           builder.Property(DSA => DSA.OriginalPrice).HasColumnType(typeName: "decimal(18,2)");
            builder.Property(S=>S.Price).HasColumnType("decimal(18,2)");
            builder.Property(S => S.Total).HasColumnType("decimal(18,2)");
         }

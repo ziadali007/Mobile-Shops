@@ -11,6 +11,7 @@ namespace Elsha3er_Shared
         public int ProductId { get; set; }
         public string ProductType { get; set; }   
         public int Quantity { get; set; }
+        public string? Notes { get; set; } = string.Empty;
 
     }
 }

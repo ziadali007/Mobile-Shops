@@ -44,8 +44,10 @@ namespace Elsha3er_Services
                 {
                     Name = sale.Name,
                     Quantity = sale.Quantity,
+                    OriginalPrice = sale.OriginalPrice,
                     Price = sale.Price,
                     Total = sale.Quantity * sale.Price,
+                    Notes = sale.Notes,
                     ArchivedDate = DateTime.UtcNow
                 };
 
@@ -55,8 +57,10 @@ namespace Elsha3er_Services
                 {
                     ProductName = archive.Name,
                     Quantity = archive.Quantity,
+                    OriginalPrice = archive.OriginalPrice,
                     Price = archive.Price,
                     Total = archive.Total,
+                    Notes = archive.Notes,
                     ArchivedDate = archive.ArchivedDate
                 });
             }
@@ -85,8 +89,10 @@ namespace Elsha3er_Services
             {
                 ProductName = a.Name,
                 Quantity = a.Quantity,
+                OriginalPrice = a.OriginalPrice,
                 Price = a.Price,
                 Total = a.Total,
+                Notes = a.Notes,
                 ArchivedDate = a.ArchivedDate
             });
 
@@ -106,8 +112,10 @@ namespace Elsha3er_Services
                 {
                     ProductName = x.Name,
                     Quantity = x.Quantity,
+                    OriginalPrice = x.OriginalPrice,
                     Price = x.Price,
-                    Total = x.Total
+                    Total = x.Total,
+                    Notes = x.Notes,
                 }).ToList()
             })
             .OrderByDescending(x => x.Date)
