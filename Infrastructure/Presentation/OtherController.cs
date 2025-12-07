@@ -37,7 +37,7 @@ namespace Presentation
             return Ok(other);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateOther([FromBody] AddOthersResultDto otherDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -51,7 +51,7 @@ namespace Presentation
             return Ok(otherDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateOther([FromBody] OthersResultDto otherDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -61,7 +61,7 @@ namespace Presentation
             return Ok(otherDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteOther(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

@@ -14,6 +14,7 @@ namespace Presentation
 {
     [ApiController]
     [Route("api/[controller]")]
+
     public class ArchiveDailySalesController : ControllerBase
     {
         private readonly string _adminPassword;
@@ -32,7 +33,7 @@ namespace Presentation
             return Ok("Sales Archived Successfully");
         }
 
-        [HttpGet]
+        [HttpGet("protected")]
         public async Task<IActionResult> GetAllArchivedSales([FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -48,7 +49,7 @@ namespace Presentation
         }
 
 
-        [HttpGet("{date}")]
+        [HttpGet("protected/{date}")]
         public async Task<IActionResult> GetArchivedSalesByDate(DateTime date, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

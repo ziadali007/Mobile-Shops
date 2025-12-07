@@ -37,7 +37,7 @@ namespace Elsha3er_Presentation
             return Ok(screen);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateScreen([FromBody] AddScreenResultDto screenDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -51,7 +51,7 @@ namespace Elsha3er_Presentation
             return Ok(screenDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateScreen([FromBody] ScreenResultDto screenDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -61,7 +61,7 @@ namespace Elsha3er_Presentation
             return Ok(screenDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protect/{id}")]
         public async Task<IActionResult> DeleteScreen(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

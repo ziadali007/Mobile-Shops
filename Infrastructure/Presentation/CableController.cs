@@ -38,7 +38,7 @@ namespace Presentation
             return Ok(cable);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateCable([FromBody] AddCableResultDto cableDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -52,7 +52,7 @@ namespace Presentation
             return Ok(cableDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateCable([FromBody] CableResultDto cableDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -62,7 +62,7 @@ namespace Presentation
             return Ok(cableDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteCable(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

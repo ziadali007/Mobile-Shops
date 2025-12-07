@@ -1,4 +1,5 @@
 ﻿using Apple1_Services.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Shared;
@@ -38,7 +39,7 @@ namespace Presentation
             return Ok(cover);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateCover([FromBody] AddCoverResultDto coverDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -52,7 +53,7 @@ namespace Presentation
             return Ok(coverDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateCover([FromBody] CoverResultDto coverDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -62,7 +63,7 @@ namespace Presentation
             return Ok(coverDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteCover(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

@@ -37,7 +37,7 @@ namespace Elsha3er_Presentation
             return Ok(charger);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateCharger([FromBody] AddChargerResultDto chargerDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -51,7 +51,7 @@ namespace Elsha3er_Presentation
             return Ok(chargerDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateCharger([FromBody] ChargerResultDto chargerDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -61,7 +61,7 @@ namespace Elsha3er_Presentation
             return Ok(chargerDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteCharger(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

@@ -38,7 +38,7 @@ namespace Presentation
             return Ok(headPhone);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateHeadPhone([FromBody] AddHeadPhoneResultDto headPhoneDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -52,7 +52,7 @@ namespace Presentation
             return Ok(headPhoneDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateHeadPhone([FromBody] HeadPhoneResultDto headPhoneDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -62,7 +62,7 @@ namespace Presentation
             return Ok(headPhoneDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteHeadPhone(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

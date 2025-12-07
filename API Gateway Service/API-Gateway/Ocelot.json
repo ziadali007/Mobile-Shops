@@ -3,6 +3,37 @@
     "BaseUrl": "http://localhost:5030"
   },
   "Routes": [
+    // ---------------------------------------------------
+    // 1. Apple Service - SPECIFIC PROTECTED ROUTE (Must be first )
+    // ---------------------------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{everything}/protected/{param}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7045
+        }
+      ],
+      "UpstreamPathTemplate": "/Apple1/protected/{everything}/{param}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "role": "Apple"
+      },
+      "AddHeadersToDownstream": {
+        "Admin-Password": "{Headers[Admin-Password]}"
+      }
+
+    },
+
+    // ---------------------------------------------------
+    // 2. Apple Service - GENERAL ROUTE (Must be second )
+    // ---------------------------------------------------
     {
       "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "https",
@@ -24,8 +55,49 @@
         "Period": "10s",
         "PeriodTimespan": 10,
         "Limit": 4
+      },
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "role": "Apple" // Only enforces JWT Role
       }
+
     },
+
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+
+    {
+      "DownstreamPathTemplate": "/api/{everything}/protected/{param}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7046
+        }
+      ],
+      "UpstreamPathTemplate": "/Elsha3er/protected/{everything}/{param}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "role": "Elsha3er"
+      },
+      "AddHeadersToDownstream": {
+        "Admin-Password": "{Headers[Admin-Password]}"
+      }
+
+    },
+
+    // ---------------------------------------------------
+    // 3. Elsha3er Service - GENERAL ROUTE
+    // ---------------------------------------------------
     {
       "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "https",
@@ -42,15 +114,37 @@
         "TtlSeconds": 30
       },
 
-
       "RateLimitOptions": {
         "EnableRateLimiting": true,
         "Period": "10s",
         "PeriodTimespan": 10,
         "Limit": 4
+      },
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "role": "Elsha3er" // Only enforces JWT Role
       }
+
+    },
+
+    // ---------------------------------------------------
+    // 4. AuthService Route
+    // ---------------------------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7048
+        }
+      ],
+      "UpstreamPathTemplate": "/AuthService/{everything}",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ]
-
-
 }

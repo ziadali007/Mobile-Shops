@@ -38,7 +38,7 @@ namespace Elsha3er_Presentation
             return Ok(cover);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateCover([FromBody] AddCoverResultDto coverDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -52,7 +52,7 @@ namespace Elsha3er_Presentation
             return Ok(coverDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateCover([FromBody] CoverResultDto coverDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -62,7 +62,7 @@ namespace Elsha3er_Presentation
             return Ok(coverDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteCover(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)

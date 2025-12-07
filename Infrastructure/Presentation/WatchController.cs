@@ -37,7 +37,7 @@ namespace Presentation
             return Ok(watches);
         }
 
-        [HttpPost]
+        [HttpPost("protected")]
         public async Task<IActionResult> CreateWatch([FromBody] AddWatchResultDto watchDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -51,7 +51,7 @@ namespace Presentation
             return Ok(watchDto);
         }
 
-        [HttpPut]
+        [HttpPut("protected")]
         public async Task<IActionResult> UpdateWatch([FromBody] WatchResultDto watchDto, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
@@ -61,7 +61,7 @@ namespace Presentation
             return Ok(watchDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteWatch(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
