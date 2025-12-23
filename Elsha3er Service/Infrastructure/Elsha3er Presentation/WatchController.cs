@@ -29,13 +29,21 @@ namespace Elsha3er_Presentation
             return Ok(watches);
         }
 
-        [HttpGet("{name}")]
-        public async Task<IActionResult> GetWatchByName(string name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetWatchById(int id)
         {
-            var watches = await serviceManager.WatchService.GetWatchByNameAsync(name);
-            if (watches == null || !watches.Any()) return NotFound($"No watches found with name '{name}'.");
-            return Ok(watches);
+            var watch = await serviceManager.WatchService.GetWatchById(id);
+            if (watch == null) return NotFound($"Watch with ID '{id}' not found.");
+            return Ok(watch);
         }
+
+        //[HttpGet("{name}")]
+        //public async Task<IActionResult> GetWatchByName(string name)
+        //{
+        //    var watches = await serviceManager.WatchService.GetWatchByNameAsync(name);
+        //    if (watches == null || !watches.Any()) return NotFound($"No watches found with name '{name}'.");
+        //    return Ok(watches);
+        //}
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateWatch([FromBody] AddWatchResultDto watchDto, [FromHeader(Name = "Admin-Password")] string password)

@@ -29,13 +29,21 @@ namespace Elsha3er_Presentation
             return Ok(others);
         }
 
-        [HttpGet("{Name}")]
-        public async Task<IActionResult> GetOtherByName(string name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetOtherById(int id)
         {
-            var other = await serviceManager.OthersService.GetOtherByNameAsync(name);
-            if (other == null) return NotFound($"Other item with name '{name}' not found.");
+            var other = await serviceManager.OthersService.GetOtherById(id);
+            if (other == null) return NotFound($"Other item with ID '{id}' not found.");
             return Ok(other);
         }
+
+        //[HttpGet("{Name}")]
+        //public async Task<IActionResult> GetOtherByName(string name)
+        //{
+        //    var other = await serviceManager.OthersService.GetOtherByNameAsync(name);
+        //    if (other == null) return NotFound($"Other item with name '{name}' not found.");
+        //    return Ok(other);
+        //}
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateOther([FromBody] AddOthersResultDto otherDto, [FromHeader(Name = "Admin-Password")] string password)

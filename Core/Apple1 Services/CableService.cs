@@ -21,16 +21,23 @@ namespace Apple1_Services
             return result;
         }
 
-        public async Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name)
+        public async Task<CableResultDto> GetCableByIdAsync(int id)
         {
-            name = name.Replace(" ", " ").ToLower();
-            var cable = await unitOfWork.GetRepository<Cable>()
-                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
-                                                                    .ToLower().ToLower().Contains(name));
+            var cable = await unitOfWork.GetRepository<Cable>().GetByIdAsync(id);
             if (cable == null) throw new CableNotFoundException("Cable Not Found");
-            var result = mapper.Map<IEnumerable<CableResultDto>>(cable);
+            var result = mapper.Map<CableResultDto>(cable);
             return result;
         }
+        //public async Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name)
+        //{
+        //    name = name.Replace(" ", " ").ToLower();
+        //    var cable = await unitOfWork.GetRepository<Cable>()
+        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
+        //                                                            .ToLower().ToLower().Contains(name));
+        //    if (cable == null) throw new CableNotFoundException("Cable Not Found");
+        //    var result = mapper.Map<IEnumerable<CableResultDto>>(cable);
+        //    return result;
+        //}
 
         public async Task CreateCableAsync(AddCableResultDto cableDto)
         {
@@ -41,7 +48,7 @@ namespace Apple1_Services
 
         public async Task UpdateCableAsync(CableResultDto cableDto)
         {
-            var existingCable = await unitOfWork.GetRepository<Cable>().GetByIdAsync(cableDto.CableId);
+            var existingCable = await unitOfWork.GetRepository<Cable>().GetByIdAsync(cableDto.Id);
             if (existingCable == null) throw new CableNotFoundException("Cable Not Found");
             var cable = mapper.Map(cableDto,existingCable);
             unitOfWork.GetRepository<Cable>().Update(cable);
@@ -56,5 +63,6 @@ namespace Apple1_Services
             unitOfWork.GetRepository<Cable>().Delete(cable);
             await unitOfWork.SaveChangesAsync();
         }
+
     }
 }

@@ -29,13 +29,21 @@ namespace Elsha3er_Presentation
             return Ok(screens);
         }
 
-        [HttpGet("{Name}")]
-        public async Task<IActionResult> GetScreenByName( string name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetScreenById(int id)
         {
-            var screen = await serviceManager.ScreenService.GetScreenByNameAsync(name);
-            if (screen == null) return NotFound($"Screen with name '{name}' not found.");
+            var screen = await serviceManager.ScreenService.GetScreenById(id);
+            if (screen == null) return NotFound($"Screen with ID '{id}' not found.");
             return Ok(screen);
         }
+
+        //[HttpGet("{Name}")]
+        //public async Task<IActionResult> GetScreenByName( string name)
+        //{
+        //    var screen = await serviceManager.ScreenService.GetScreenByNameAsync(name);
+        //    if (screen == null) return NotFound($"Screen with name '{name}' not found.");
+        //    return Ok(screen);
+        //}
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateScreen([FromBody] AddScreenResultDto screenDto, [FromHeader(Name = "Admin-Password")] string password)

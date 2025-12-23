@@ -13,8 +13,7 @@ namespace Elsha3er.Mapping_Profiles
     {
         public CableProfile()
         {
-            CreateMap<Cable, CableResultDto>().ReverseMap().ForMember(S=>S.Id,SO=>SO.MapFrom(Src=>Src.CableId));
-            CreateMap<CableResultDto, Cable>().ReverseMap().ForMember(S => S.CableId, SO => SO.MapFrom(Src => Src.Id));
+            CreateMap<Cable, CableResultDto>().ReverseMap();
 
             CreateMap<AddCableResultDto, Cable>().ReverseMap();
         }

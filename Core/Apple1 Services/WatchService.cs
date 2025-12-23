@@ -21,16 +21,25 @@ namespace Apple1_Services
             return result;
         }
 
-        public async Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name)
+
+        public async Task<WatchResultDto> GetWatchByIdAsync(int id)
         {
-            name = name.Replace(" ", " ").ToLower();
-            var watches = await unitOfWork.GetRepository<Watch>()
-                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
-                                                                    .ToLower().ToLower().Contains(name));
-            if (watches == null) throw new WatchesNotFoundException("There Is No Watches");
-            var result = mapper.Map<IEnumerable<WatchResultDto>> (watches);
+            var watch= await unitOfWork.GetRepository<Watch>().GetByIdAsync(id);
+            if (watch == null) throw new WatchesNotFoundException("Watch Not Found");
+            var result = mapper.Map<WatchResultDto>(watch);
             return result;
         }
+
+        //public async Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name)
+        //{
+        //    name = name.Replace(" ", " ").ToLower();
+        //    var watches = await unitOfWork.GetRepository<Watch>()
+        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
+        //                                                            .ToLower().ToLower().Contains(name));
+        //    if (watches == null) throw new WatchesNotFoundException("There Is No Watches");
+        //    var result = mapper.Map<IEnumerable<WatchResultDto>> (watches);
+        //    return result;
+        //}
         public async Task CreateWatchAsync(AddWatchResultDto watchDto)
         {
             var watch= mapper.Map<Watch>(watchDto);
@@ -41,7 +50,7 @@ namespace Apple1_Services
         }
         public async Task UpdateWatchAsync(WatchResultDto watchDto)
         {
-            var watch = await unitOfWork.GetRepository<Watch>().GetByIdAsync(watchDto.WatchId);
+            var watch = await unitOfWork.GetRepository<Watch>().GetByIdAsync(watchDto.Id);
             if (watch == null) throw new WatchesNotFoundException("Watch Not Found");
             var result=mapper.Map(watchDto,watch);
             unitOfWork.GetRepository<Watch>().Update(result);
@@ -55,6 +64,5 @@ namespace Apple1_Services
             unitOfWork.GetRepository<Watch>().Delete(watch);
             await unitOfWork.SaveChangesAsync();
         }
-
     }
 }

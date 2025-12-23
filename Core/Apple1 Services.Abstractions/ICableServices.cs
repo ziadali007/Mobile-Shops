@@ -10,7 +10,10 @@ namespace Apple1_Services.Abstractions
     public interface ICableServices
     {
         Task<IEnumerable<CableResultDto>> GetAllCablesAsync();
-        Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name);
+
+        Task<CableResultDto> GetCableByIdAsync(int id);
+
+        //Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name);
         Task CreateCableAsync(AddCableResultDto cableDto);
         Task UpdateCableAsync( CableResultDto cableDto);
         Task DeleteCableAsync(int id);

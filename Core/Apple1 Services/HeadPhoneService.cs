@@ -20,17 +20,23 @@ namespace Apple1_Services
             var result = mapper.Map<IEnumerable<HeadPhoneResultDto>>(headPhones);
             return result;
         }
-
-        public async Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name)
+        public async Task<HeadPhoneResultDto> GetHeadPhoneByIdAsync(int id)
         {
-            name = name.Replace(" ", " ").ToLower();
-            var headPhone = await unitOfWork.GetRepository<HeadPhone>()
-                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
-                                                                    .ToLower().ToLower().Contains(name));
-            if (headPhone == null) throw new HeadPhoneNotFoundException("HeadPhone Not Found");
-            var result = mapper.Map<IEnumerable<HeadPhoneResultDto>>(headPhone);
+            var headphone= await unitOfWork.GetRepository<HeadPhone>().GetByIdAsync(id);
+            if (headphone == null) throw new HeadPhoneNotFoundException("HeadPhone Not Found");
+            var result = mapper.Map<HeadPhoneResultDto>(headphone);
             return result;
         }
+        //public async Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name)
+        //{
+        //    name = name.Replace(" ", " ").ToLower();
+        //    var headPhone = await unitOfWork.GetRepository<HeadPhone>()
+        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
+        //                                                            .ToLower().ToLower().Contains(name));
+        //    if (headPhone == null) throw new HeadPhoneNotFoundException("HeadPhone Not Found");
+        //    var result = mapper.Map<IEnumerable<HeadPhoneResultDto>>(headPhone);
+        //    return result;
+        //}
 
         public async Task CreateHeadPhonesAsync(AddHeadPhoneResultDto headPhonesDto)
         {
@@ -42,7 +48,7 @@ namespace Apple1_Services
 
         public async Task UpdateHeadPhonesAsync(HeadPhoneResultDto headPhonesDto)
         {
-            var existingHeadPhone = await unitOfWork.GetRepository<HeadPhone>().GetByIdAsync(headPhonesDto.HeadPhoneId);
+            var existingHeadPhone = await unitOfWork.GetRepository<HeadPhone>().GetByIdAsync(headPhonesDto.Id);
             if (existingHeadPhone == null) throw new HeadPhoneNotFoundException("HeadPhone Not Found");
             var headPhone = mapper.Map(headPhonesDto,existingHeadPhone);
             unitOfWork.GetRepository<HeadPhone>().Update(headPhone);

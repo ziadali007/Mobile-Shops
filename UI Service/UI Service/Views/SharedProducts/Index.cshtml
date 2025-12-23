@@ -1,0 +1,103 @@
+﻿@using Shared.UI
+
+@model List<ProductDto>
+
+<h2 class="mb-3">Products</h2>
+
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create">Create New Product</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No products available.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+                <th>Sale</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="ConfirmDelete"
+                           asp-route-id="@item.Id"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+
+
+
+
+                    </td>
+                    <td>
+                        <button class="btn btn-success btn-sm"
+                                onclick="openSaleModal(@item.Id)">
+                            Add to Sale
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- SALE MODAL -->
+<div class="modal fade" id="saleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add to Sale</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form method="post" asp-controller="Sale" asp-action="Add">
+                <div class="modal-body">
+                    <input type="hidden" id="Id" name="Id" />
+
+                    <div class="mb-3">
+                        <label>Quantity</label>
+                        <input type="number"
+                               name="Quantity"
+                               class="form-control"
+                               min="1"
+                               required />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success">Add to Sale</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function openSaleModal(id, name) {
+        document.getElementById("ProductId").value = id;
+        var modal = new bootstrap.Modal(document.getElementById('saleModal'));
+        modal.show();
+    }
+</script>

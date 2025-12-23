@@ -30,13 +30,21 @@ namespace Presentation
             return Ok(headPhones);
         }
 
-        [HttpGet("{Name}")]
-        public async Task<IActionResult> GetHeadPhoneByName(string name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetHeadPhoneById(int id)
         {
-            var headPhone = await serviceManager.HeadPhoneService.GetHeadPhonesByNameAsync(name);
-            if (headPhone == null) return NotFound($"Head phone with name '{name}' not found.");
+            var headPhone = await serviceManager.HeadPhoneService.GetHeadPhoneByIdAsync(id);
+            if (headPhone == null) return NotFound($"Head phone with ID '{id}' not found.");
             return Ok(headPhone);
         }
+
+        //[HttpGet("{Name}")]
+        //public async Task<IActionResult> GetHeadPhoneByName(string name)
+        //{
+        //    var headPhone = await serviceManager.HeadPhoneService.GetHeadPhonesByNameAsync(name);
+        //    if (headPhone == null) return NotFound($"Head phone with name '{name}' not found.");
+        //    return Ok(headPhone);
+        //}
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateHeadPhone([FromBody] AddHeadPhoneResultDto headPhoneDto, [FromHeader(Name = "Admin-Password")] string password)

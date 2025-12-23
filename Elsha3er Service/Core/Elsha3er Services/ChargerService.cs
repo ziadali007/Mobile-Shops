@@ -21,16 +21,24 @@ namespace Elsha3er_Services
             return result;
         }
 
-        public async Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name)
+        public async Task<ChargerResultDto> GetChargerById(int id)
         {
-            name = name.Replace(" ", " ").ToLower();
-            var charger = await unitOfWork.GetRepository<Charger>()
-                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
-                                                                    .ToLower().ToLower().Contains(name));
+            var charger = await unitOfWork.GetRepository<Charger>().GetByIdAsync(id);
             if (charger == null) throw new ChargerNotFoundException("Charger Not Found");
-            var result = mapper.Map<IEnumerable<ChargerResultDto>>(charger);
+            var result = mapper.Map<ChargerResultDto>(charger);
             return result;
         }
+
+        //public async Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name)
+        //{
+        //    name = name.Replace(" ", " ").ToLower();
+        //    var charger = await unitOfWork.GetRepository<Charger>()
+        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
+        //                                                            .ToLower().ToLower().Contains(name));
+        //    if (charger == null) throw new ChargerNotFoundException("Charger Not Found");
+        //    var result = mapper.Map<IEnumerable<ChargerResultDto>>(charger);
+        //    return result;
+        //}
         public async Task CreateChargerAsync(AddChargerResultDto chargerDto)
         {
             var charger = mapper.Map<Charger>(chargerDto);
@@ -40,7 +48,7 @@ namespace Elsha3er_Services
 
         public async Task UpdateChargerAsync(ChargerResultDto chargerDto)
         {
-            var existingCharger =await unitOfWork.GetRepository<Charger>().GetByIdAsync(chargerDto.ChargerId);
+            var existingCharger =await unitOfWork.GetRepository<Charger>().GetByIdAsync(chargerDto.Id);
             if (existingCharger == null) throw new ChargerNotFoundException("Charger Not Found");
             var charger = mapper.Map(chargerDto,existingCharger);
             unitOfWork.GetRepository<Charger>().Update(charger);

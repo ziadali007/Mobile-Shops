@@ -8,7 +8,7 @@ namespace Elsha3er_Shared
 {
     public class OthersResultDto
     {
-        public int OtherId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public int Quantity { get; set; }

@@ -14,12 +14,10 @@ namespace Elsha3er_Services.Mapping_Profiles
         public OthersProfile()
         {
             CreateMap<AddOthersResultDto, Others>().ReverseMap();
-            CreateMap<Others, OthersResultDto>()
-              .ForMember(d => d.OtherId, o => o.MapFrom(s => s.Id));
 
-            CreateMap<OthersResultDto, Others>()
-                .ForMember(d => d.Id, o => o.MapFrom(s => s.OtherId));
 
+            CreateMap<OthersResultDto, Others>().ReverseMap();
+              
         }
     }
 }
