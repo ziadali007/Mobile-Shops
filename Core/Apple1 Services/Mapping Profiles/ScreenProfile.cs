@@ -13,9 +13,7 @@ namespace Apple1_Services.Mapping_Profiles
     {
         public ScreenProfile()
         {
-            CreateMap<Screen,ScreenResultDto>().ReverseMap().ForMember(S => S.Id, SO => SO.MapFrom(Src => Src.ScreenId));
-            CreateMap<ScreenResultDto,Screen>().ReverseMap().ForMember(S => S.ScreenId, SO => SO.MapFrom(Src => Src.Id));
-
+            CreateMap<ScreenResultDto, Screen>().ReverseMap();
             CreateMap<AddScreenResultDto, Screen>().ReverseMap();
         }
     }

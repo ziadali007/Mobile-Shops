@@ -1,0 +1,33 @@
+﻿@model dynamic
+
+<h2>Create Product</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label>Name</label>
+        <input class="form-control" name="Name" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Type</label>
+        <input class="form-control" name="Type" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input class="form-control" name="Quantity" type="number" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input class="form-control" name="Price" type="number" step="0.01" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Original Price</label>
+        <input class="form-control" name="OriginalPrice" type="number" step="0.01" required />
+    </div>
+
+    <button class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

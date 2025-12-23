@@ -30,14 +30,22 @@ namespace Presentation
             return Ok(covers);
         }
 
-        [HttpGet("{Name}")]
-
-        public async Task<IActionResult> GetCoverByName(string name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCoverById(int id)
         {
-            var cover = await serviceManager.CoverService.GetCoverByNameAsync(name);
-            if (cover == null) return NotFound($"Cover with name '{name}' not found.");
+            var cover = await serviceManager.CoverService.GetCoverByIdAsync(id);
+            if (cover == null) return NotFound($"Cover with ID '{id}' not found.");
             return Ok(cover);
         }
+
+        //[HttpGet("{Name}")]
+
+        //public async Task<IActionResult> GetCoverByName(string name)
+        //{
+        //    var cover = await serviceManager.CoverService.GetCoverByNameAsync(name);
+        //    if (cover == null) return NotFound($"Cover with name '{name}' not found.");
+        //    return Ok(cover);
+        //}
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateCover([FromBody] AddCoverResultDto coverDto, [FromHeader(Name = "Admin-Password")] string password)

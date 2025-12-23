@@ -20,17 +20,23 @@ namespace Apple1_Services
             var result = mapper.Map<IEnumerable<OthersResultDto>>(others);
             return result;
         }
-
-        public async Task<IEnumerable<OthersResultDto>> GetOtherByNameAsync(string name)
+        public async Task<OthersResultDto> GetOtherByIdAsync(int id)
         {
-            name = name.Replace(" ", " ").ToLower();
-            var other = await unitOfWork.GetRepository<Others>()
-                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
-                                                                    .ToLower().ToLower().Contains(name));
+            var other= await unitOfWork.GetRepository<Others>().GetByIdAsync(id);
             if (other == null) throw new OthersNotFoundException("Other Not Found");
-            var result = mapper.Map<IEnumerable<OthersResultDto>>(other);
+            var result = mapper.Map<OthersResultDto>(other);
             return result;
         }
+        //public async Task<IEnumerable<OthersResultDto>> GetOtherByNameAsync(string name)
+        //{
+        //    name = name.Replace(" ", " ").ToLower();
+        //    var other = await unitOfWork.GetRepository<Others>()
+        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
+        //                                                            .ToLower().ToLower().Contains(name));
+        //    if (other == null) throw new OthersNotFoundException("Other Not Found");
+        //    var result = mapper.Map<IEnumerable<OthersResultDto>>(other);
+        //    return result;
+        //}
         public async Task CreateOtherAsync(AddOthersResultDto otherDto)
         {
            var other = mapper.Map<Others>(otherDto);
@@ -40,7 +46,7 @@ namespace Apple1_Services
 
         public async Task UpdateOtherAsync(OthersResultDto otherDto)
         {
-            var existingOther = await unitOfWork.GetRepository<Others>().GetByIdAsync(otherDto.OtherId);
+            var existingOther = await unitOfWork.GetRepository<Others>().GetByIdAsync(otherDto.Id);
             if (existingOther == null) throw new OthersNotFoundException("Other Not Found");
             var other = mapper.Map(otherDto,existingOther);
             unitOfWork.GetRepository<Others>().Update(other);
@@ -56,5 +62,6 @@ namespace Apple1_Services
             await unitOfWork.SaveChangesAsync();
         }
 
+  
     }
 }

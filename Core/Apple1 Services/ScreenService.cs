@@ -21,16 +21,23 @@ namespace Apple1_Services
             return result;
         }
 
-        public async Task<IEnumerable<ScreenResultDto>> GetScreenByNameAsync(string name)
+        public async Task<ScreenResultDto> GetScreenByIdAsync(int id)
         {
-            name = name.Replace(" ", " ").ToLower();
-            var screen = await unitOfWork.GetRepository<Screen>()
-                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
-                                                                    .ToLower().Contains(name));
+            var screen = await unitOfWork.GetRepository<Screen>().GetByIdAsync(id);
             if (screen == null) throw new ScreenNotFoundException("Screen Not Found");
-            var result = mapper.Map<IEnumerable<ScreenResultDto>>(screen);
+            var result = mapper.Map<ScreenResultDto>(screen);
             return result;
         }
+        //public async Task<IEnumerable<ScreenResultDto>> GetScreenByNameAsync(string name)
+        //{
+        //    name = name.Replace(" ", " ").ToLower();
+        //    var screen = await unitOfWork.GetRepository<Screen>()
+        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
+        //                                                            .ToLower().Contains(name));
+        //    if (screen == null) throw new ScreenNotFoundException("Screen Not Found");
+        //    var result = mapper.Map<IEnumerable<ScreenResultDto>>(screen);
+        //    return result;
+        //}
 
         public async Task CreateScreenAsync(AddScreenResultDto screenDto)
         {
@@ -40,7 +47,7 @@ namespace Apple1_Services
         }
         public async Task UpdateScreenAsync(ScreenResultDto screenDto)
         {
-            var existingScreen =await unitOfWork.GetRepository<Screen>().GetByIdAsync(screenDto.ScreenId);
+            var existingScreen =await unitOfWork.GetRepository<Screen>().GetByIdAsync(screenDto.Id);
             if (existingScreen == null) throw new ScreenNotFoundException("Screen Not Found");
             var screen = mapper.Map(screenDto, existingScreen);
             unitOfWork.GetRepository<Screen>().Update(screen);
@@ -54,6 +61,5 @@ namespace Apple1_Services
             unitOfWork.GetRepository<Screen>().Delete(screen);
             await unitOfWork.SaveChangesAsync();
         }
-
     }
 }

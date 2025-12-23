@@ -4,9 +4,9 @@
     {
         public static List<User> Users = new()
         {
-            new User{Email= "//Put Your Account Email", Password = "Put Your Account Password", role="The Keyword That Will Route To Service"},
+            new User{Email= "apple@shop.com", Password = "apple123", role="Apple"},
 
-            new User{Email= "//Put Your Account Email", Password = "Put Your Account Password", role="The Keyword That Will Route To Service"}
+            new User{Email= "elsha3er@shop.com", Password = "elsha3er456", role="Elsha3er"}
         };
     }
 }

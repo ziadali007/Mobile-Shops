@@ -1,0 +1,52 @@
+﻿@using Shared.UI
+
+@model List<SaleProductDto>
+
+<h2 class="mb-3">Products</h2>
+
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create">Create New Product</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No Sales available.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Notes</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Type</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>@item.Total</td>
+                    <td>@item.Notes</td>
+                    <td>@item.Time</td>
+
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

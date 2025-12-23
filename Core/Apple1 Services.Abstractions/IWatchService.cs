@@ -10,7 +10,9 @@ namespace Apple1_Services.Abstractions
     public interface IWatchService
     {
         Task<IEnumerable<WatchResultDto>> GetAllWatches();
-        Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name);
+        Task<WatchResultDto> GetWatchByIdAsync(int id);
+
+        //Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name);
 
         Task CreateWatchAsync(AddWatchResultDto watchDto);
 

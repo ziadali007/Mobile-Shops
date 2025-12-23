@@ -11,7 +11,9 @@ namespace Elsha3er_Services.Abstractions
     {
         Task<IEnumerable<CoverResultDto>> GetAllCoversAsync();
 
-        Task<IEnumerable<CoverResultDto>> GetCoverByNameAsync(string name);
+        Task<CoverResultDto> GetCoverById(int id);
+
+        //Task<IEnumerable<CoverResultDto>> GetCoverByNameAsync(string name);
 
         Task CreateCoverAsync(AddCoverResultDto coverDto);
 

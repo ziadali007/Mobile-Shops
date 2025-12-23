@@ -13,9 +13,7 @@ namespace Apple1_Services.Mapping_Profiles
     {
         public HeadPhoneService()
         {
-            CreateMap<HeadPhone, HeadPhoneResultDto>().ReverseMap().ForMember(S => S.Id, SO => SO.MapFrom(Src => Src.HeadPhoneId));
-            CreateMap<HeadPhoneResultDto, HeadPhone>().ReverseMap().ForMember(S => S.HeadPhoneId, SO => SO.MapFrom(Src => Src.Id));
-
+            CreateMap<HeadPhoneResultDto, HeadPhone>().ReverseMap();
             CreateMap<AddHeadPhoneResultDto, HeadPhone>().ReverseMap();
         }
     }

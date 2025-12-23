@@ -9,7 +9,9 @@ namespace Apple1_Services.Abstractions
     public interface IHeadPhonesServices
     {
         Task<IEnumerable<HeadPhoneResultDto>> GetAllHeadPhonesAsync();
-        Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name);
+        Task<HeadPhoneResultDto> GetHeadPhoneByIdAsync(int id);
+
+        //Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name);
         Task CreateHeadPhonesAsync(AddHeadPhoneResultDto headPhonesDto);
         Task UpdateHeadPhonesAsync( HeadPhoneResultDto headPhonesDto);
         Task DeleteHeadPhonesAsync(int id);

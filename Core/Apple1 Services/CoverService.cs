@@ -22,6 +22,15 @@ namespace Apple1_Services
             return result;
         }
 
+
+        public async Task<CoverResultDto> GetCoverByIdAsync(int id)
+        {
+            var cover= await unitOfWork.GetRepository<Cover>().GetByIdAsync(id);
+            if (cover == null) throw new CoverNotFoundException("Cover Not Found");
+            var result= mapper.Map<CoverResultDto>(cover);
+            return result;
+        }
+
         public async Task<IEnumerable<CoverResultDto>> GetCoverByNameAsync(string name)
         {
             name=name.Replace(" ", " ").ToLower();
@@ -47,7 +56,7 @@ namespace Apple1_Services
         public async Task UpdateCoverAsync(CoverResultDto coverDto)
         {
             var existingCover = await unitOfWork.GetRepository<Cover>()
-                                        .GetByIdAsync(coverDto.CoverId);
+                                        .GetByIdAsync(coverDto.Id);
             if (existingCover == null) throw new CoverNotFoundException("Cover Not Found");
             var cover = mapper.Map(coverDto,existingCover);
             unitOfWork.GetRepository<Cover>().Update(cover);

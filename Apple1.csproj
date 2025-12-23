@@ -13,24 +13,28 @@
     <Compile Remove="Elsha3er Service\**" />
     <Compile Remove="Infrastructure\**" />
     <Compile Remove="Shared\**" />
+    <Compile Remove="UI Service\**" />
     <Content Remove="API Gateway Service\**" />
     <Content Remove="Auth Service\**" />
     <Content Remove="Core\**" />
     <Content Remove="Elsha3er Service\**" />
     <Content Remove="Infrastructure\**" />
     <Content Remove="Shared\**" />
+    <Content Remove="UI Service\**" />
     <EmbeddedResource Remove="API Gateway Service\**" />
     <EmbeddedResource Remove="Auth Service\**" />
     <EmbeddedResource Remove="Core\**" />
     <EmbeddedResource Remove="Elsha3er Service\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
     <EmbeddedResource Remove="Shared\**" />
+    <EmbeddedResource Remove="UI Service\**" />
     <None Remove="API Gateway Service\**" />
     <None Remove="Auth Service\**" />
     <None Remove="Core\**" />
     <None Remove="Elsha3er Service\**" />
     <None Remove="Infrastructure\**" />
     <None Remove="Shared\**" />
+    <None Remove="UI Service\**" />
   </ItemGroup>
 
   <ItemGroup>
