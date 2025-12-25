@@ -20,11 +20,14 @@ namespace Presentation_Layer
     {
         protected readonly ShopService _shopService;
         protected readonly string _productEndpoint;
-
-        protected BaseProductController(ShopService service, string entity)
+        protected readonly string SaleController;
+        protected readonly string _adminPassword;
+        protected BaseProductController(ShopService service, string entity , string SaleName , string password)
         {
             _shopService = service;
             _productEndpoint = entity;
+            SaleController = SaleName;
+            _adminPassword = password;
         }
         protected string GetAdminPassword()
         {
@@ -46,6 +49,8 @@ namespace Presentation_Layer
         {
             if (string.IsNullOrEmpty(_productEndpoint))
                 return BadRequest("Product endpoint is required");
+
+            ViewBag.SaleController = SaleController;
 
             var response = await _shopService.GetAllAsync(_productEndpoint);
 
@@ -77,7 +82,7 @@ namespace Presentation_Layer
                 return RequireAdminPassword();
             var password=GetAdminPassword();
 
-            if(password == "Tooms007" || password == "Elsha3er7579")
+            if(password == _adminPassword)
             {
                 return View(viewName: "~/Views/SharedProducts/Create.cshtml");
 
@@ -91,6 +96,8 @@ namespace Presentation_Layer
         public async Task<IActionResult> Create(CreateProductDto dto)
         {
             var password = GetAdminPassword();
+
+            dto.Type = _productEndpoint;
 
             var response = await _shopService.ProtectedPostAsync(
                 $"protected/{_productEndpoint}",
@@ -129,7 +136,7 @@ namespace Presentation_Layer
             );
 
 
-            if (password == "Tooms007" || password == "Elsha3er7579")
+            if (password == _adminPassword)
             {
                 return View(viewName: "~/Views/SharedProducts/Edit.cshtml",dto);
 
@@ -139,11 +146,13 @@ namespace Presentation_Layer
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(ProductDto dto)
+        public async Task<IActionResult> Edit(UpdateProductDto dto)
         {
             var password= GetAdminPassword();
-            if (!ModelState.IsValid)
-                return View("~/Views/SharedProducts/Edit.cshtml", dto);
+            //if (!ModelState.IsValid)
+            //    return View("~/Views/SharedProducts/Edit.cshtml", dto);
+
+            dto.Type = _productEndpoint;
 
             var response = await _shopService.ProtectedPutAsync(
                 $"protected/{_productEndpoint}",
@@ -175,7 +184,7 @@ namespace Presentation_Layer
         {
             var password = GetAdminPassword();
 
-            if (password != "Tooms007" && password != "Elsha3er7579")
+            if (password != _adminPassword)
                 return View("~/Views/Shared/Error.cshtml");
 
             var response = await _shopService.ProtectedDeleteAsync(

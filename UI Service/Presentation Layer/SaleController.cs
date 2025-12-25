@@ -10,33 +10,34 @@ using System.Threading.Tasks;
 
 namespace Presentation_Layer
 {
-    public class SaleController : Controller
+    public abstract class SaleController : Controller
     {
         protected readonly ShopService _shopService;
-
-        protected SaleController(ShopService shopService)
+        protected abstract string _productEndpoint { get; }
+        public SaleController(ShopService shopService)
         {
             _shopService = shopService;
         }
 
+
         public virtual async Task<IActionResult> Index()
         {
-            if (string.IsNullOrEmpty("Sale"))
+            if (string.IsNullOrEmpty(_productEndpoint))
                 return BadRequest("Product endpoint is required");
 
-            var response = await _shopService.GetAllAsync("Sale");
+            var response = await _shopService.GetAllAsync(_productEndpoint);
 
             if (!response.IsSuccessStatusCode)
             {
                 ViewBag.Error = $"API Error: {response.StatusCode}";
-                return View("~/Views/SharedProducts/Index.cshtml", new List<SaleProductDto>());
+                return View("~/Views/SharedProducts/SaleIndex.cshtml", new List<SaleProductDto>());
             }
 
             var json = await response.Content.ReadAsStringAsync();
 
             if (string.IsNullOrWhiteSpace(json))
             {
-                return View("~/Views/SharedProducts/Index.cshtml", new List<SaleProductDto>());
+                return View("~/Views/SharedProducts/SaleIndex.cshtml", new List<SaleProductDto>());
             }
 
             var data = JsonSerializer.Deserialize<List<SaleProductDto>>(json,
@@ -48,11 +49,20 @@ namespace Presentation_Layer
         }
 
         [HttpPost]
-        public virtual async Task<IActionResult> Add(CreateSaleProductDto dto)
+        [ValidateAntiForgeryToken]
+        public virtual async Task<IActionResult> Add(ProductDto dto, string notes)
         {
-            if (string.IsNullOrEmpty("Sale"))
+            if (string.IsNullOrEmpty(_productEndpoint))
                 return BadRequest("Product endpoint is required");
-            var response = await _shopService.CreateSaleAsync(dto);
+
+            var Saledto = new CreateSaleProductDto()
+            {
+                ProductId = dto.Id,
+                ProductType=dto.Type,
+                Quantity=dto.Quantity,
+                Notes = notes
+            };
+            var response = await _shopService.CreateSaleAsync(Saledto);
             if (!response.IsSuccessStatusCode)
             {
                 ViewBag.Error = $"API Error: {response.StatusCode}";
@@ -61,10 +71,10 @@ namespace Presentation_Layer
             return RedirectToAction("Index");
         }
 
-        [HttpDelete]
+        [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (string.IsNullOrEmpty("Sale"))
+            if (string.IsNullOrEmpty(_productEndpoint))
                 return BadRequest("Product endpoint is required");
             var response = await _shopService.DeleteSaleAsync(id);
             if (!response.IsSuccessStatusCode)

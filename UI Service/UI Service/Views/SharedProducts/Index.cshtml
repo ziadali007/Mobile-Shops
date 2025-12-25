@@ -51,7 +51,7 @@ else
                     </td>
                     <td>
                         <button class="btn btn-success btn-sm"
-                                onclick="openSaleModal(@item.Id)">
+                                onclick="openSaleModal('@item.Id', '@item.Type')">
                             Add to Sale
                         </button>
                     </td>
@@ -70,34 +70,57 @@ else
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <form method="post" asp-controller="Sale" asp-action="Add">
-                <div class="modal-body">
-                    <input type="hidden" id="Id" name="Id" />
+            <form method="post"
+                  asp-controller="@ViewBag.SaleController"
+                  asp-action="Add">
 
+                <div class="modal-body">
+                    <input type="hidden" id="ProductId" name="Id" />
+                    <input type="hidden" id="ProductType" name="Type" />
+
+                    <!-- Quantity Field -->
                     <div class="mb-3">
-                        <label>Quantity</label>
+                        <label class="form-label">Quantity</label>
                         <input type="number"
                                name="Quantity"
                                class="form-control"
                                min="1"
                                required />
                     </div>
+
+                    <!-- Notes Field -->
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea name="notes"
+                                  id="ProductNotes"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="Enter notes for this sale..."></textarea>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn btn-success">Add to Sale</button>
+                    <button type="submit" class="btn btn-success">Add to Sale</button>
                 </div>
             </form>
+
 
         </div>
     </div>
 </div>
 
 <script>
-    function openSaleModal(id, name) {
+        function openSaleModal(id, type) {
+        // Set the hidden input values
         document.getElementById("ProductId").value = id;
+        document.getElementById("ProductType").value = type;
+
+        // Show the modal
         var modal = new bootstrap.Modal(document.getElementById('saleModal'));
         modal.show();
-    }
+        }
+    
+
 </script>
+

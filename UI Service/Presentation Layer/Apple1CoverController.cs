@@ -10,6 +10,7 @@ namespace Presentation_Layer
 {
     public class Apple1CoverController : BaseProductController
     {
-        public Apple1CoverController(AppleShopService appleShop) : base (appleShop , "Cover") { }
+        public Apple1CoverController(AppleShopService appleShop) : base (appleShop , "Cover", "AppleSaleShop", "Tooms007") { }
+
     }
 }

@@ -21,7 +21,6 @@ namespace UI_Service
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<AppleShopService>();
             builder.Services.AddScoped<Elsha3erShopService>();
-
             builder.Services.AddDistributedMemoryCache();
 
             builder.Services.AddSession(options =>

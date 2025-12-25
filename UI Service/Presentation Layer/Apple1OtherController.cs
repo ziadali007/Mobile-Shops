@@ -10,7 +10,7 @@ namespace Presentation_Layer
     public class Apple1OtherController : BaseProductController
     {
         public Apple1OtherController(AppleShopService shopService)
-            : base(shopService, "Other")
+            : base(shopService, "Others", "AppleSaleShop", "Tooms007")
         {
         }
     }
