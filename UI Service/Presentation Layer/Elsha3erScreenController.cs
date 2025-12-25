@@ -10,6 +10,6 @@ namespace Presentation_Layer
     public class Elsha3erScreenController : BaseProductController
     {
         public Elsha3erScreenController(Elsha3erShopService shopService)
-            : base(shopService, "Screen") { }
+            : base(shopService, "Screen", "Elsha3erSaleShop", "Elsha3er7579") { }
     }
 }

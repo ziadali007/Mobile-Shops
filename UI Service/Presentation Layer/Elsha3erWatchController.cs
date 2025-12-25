@@ -10,6 +10,6 @@ namespace Presentation_Layer
     public class Elsha3erWatchController : BaseProductController
     {
         public Elsha3erWatchController(Elsha3erShopService shopService)
-            : base(shopService, "Watch") { }
+            : base(shopService, "Watch", "Elsha3erSaleShop", "Elsha3er7579") { }
     }
 }

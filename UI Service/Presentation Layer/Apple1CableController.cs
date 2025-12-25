@@ -9,7 +9,8 @@ namespace Presentation_Layer
 {
     public class Apple1CableController : BaseProductController
     {
+
         public Apple1CableController(AppleShopService shopService)
-            : base(shopService, "Cable") { }
+            : base(shopService, "Cable", "AppleSaleShop","Tooms007") { }
     }
 }

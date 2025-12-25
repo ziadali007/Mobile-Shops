@@ -9,7 +9,7 @@ namespace Presentation_Layer
 {
     public class Apple1WatchController : BaseProductController
     {
-        public Apple1WatchController(AppleShopService appleShop) : base(appleShop,"Watch")
+        public Apple1WatchController(AppleShopService appleShop) : base(appleShop,"Watch", "AppleSaleShop", "Tooms007")
         {
         }
     }

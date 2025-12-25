@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Presentation_Layer
 {
-    public class Apple1HeadPhoneController : BaseProductController
+    public class AppleSaleShopController : SaleController
     {
-        public Apple1HeadPhoneController(AppleShopService shopService)
-            : base(shopService, "HeadPhone", "AppleSaleShop", "Tooms007")
+        protected override string _productEndpoint => "Sale";
+
+        public AppleSaleShopController(AppleShopService shopService)
+            : base(shopService)
         {
         }
     }

@@ -1,0 +1,47 @@
+﻿@using Shared.UI
+
+@model IEnumerable<ArchiveItemDto>
+
+<h2 class="mb-3">Products</h2>
+
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create">Create New Product</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No Sales available.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Original Price</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Notes</th>
+                <th>Archived Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.OriginalPrice</td>
+                    <td>@item.Price</td>
+                    <td>@item.Total</td>
+                    <td>@item.Notes</td>
+                    <td>@item.ArchivedDate</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,50 @@
+﻿@using Shared.UI
+@model IEnumerable<ArchiveDto>
+
+<h2 class="mb-3">Sales Archive</h2>
+
+<!-- DATE FILTER -->
+<form method="get" asp-action="ArchiveByDate" class="row g-3 mb-4">
+    <div class="col-auto">
+        <label class="form-label fw-bold">Select Date</label>
+        <input type="date"
+               name="date"
+               class="form-control"
+               required />
+    </div>
+
+    <div class="col-auto align-self-end">
+        <button type="submit" class="btn btn-primary">
+            Filter
+        </button>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No Sales available.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Total Amount</th>
+                <th>Total Quantity</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TotalAmount</td>
+                    <td>@item.TotalQuantity</td>
+                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

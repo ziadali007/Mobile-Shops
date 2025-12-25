@@ -10,7 +10,7 @@ namespace Presentation_Layer
     public class Apple1ScreenController : BaseProductController
     {
         public Apple1ScreenController(AppleShopService shopService)
-            : base(shopService, "Screen")
+            : base(shopService, "Screen", "AppleSaleShop", "Tooms007")
         { }
 
 
