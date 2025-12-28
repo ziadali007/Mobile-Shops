@@ -69,7 +69,7 @@ namespace Elsha3er_Presentation
             return Ok(screenDto);
         }
 
-        [HttpDelete("protect/{id}")]
+        [HttpDelete("protected/{id}")]
         public async Task<IActionResult> DeleteScreen(int id, [FromHeader(Name = "Admin-Password")] string password)
         {
             if (password != _adminPassword)
