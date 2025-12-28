@@ -12,7 +12,7 @@ namespace Elsha3er_Services.Abstractions
         Task<IEnumerable<ChargerResultDto>> GetAllChargersAsync();
         Task<ChargerResultDto> GetChargerById(int id);
 
-        //Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name);
+        Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name);
         Task CreateChargerAsync(AddChargerResultDto chargerDto);
         Task UpdateChargerAsync(ChargerResultDto chargerDto);
         Task DeleteChargerAsync(int id);

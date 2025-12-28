@@ -29,21 +29,22 @@ namespace Presentation
             return Ok(cables);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCableById(int id)
         {
             var cable = await serviceManager.CableService.GetCableByIdAsync(id);
             if (cable == null) return NotFound($"Cable with ID '{id}' not found.");
             return Ok(cable);
         }
-        //[HttpGet("{Name}")]
-        //public async Task<IActionResult> GetCableByName(string name)
-        //{
 
-        //    var cable = await serviceManager.CableService.GetCableByNameAsync(name);
-        //    if (cable == null) return NotFound($"Cable with name '{name}' not found.");
-        //    return Ok(cable);
-        //}
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetCableByName(string name)
+        {
+
+            var cable = await serviceManager.CableService.GetCableByNameAsync(name);
+            if (cable == null) return NotFound($"Cable with name '{name}' not found.");
+            return Ok(cable);
+        }
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateCable([FromBody] AddCableResultDto cableDto, [FromHeader(Name = "Admin-Password")] string password)

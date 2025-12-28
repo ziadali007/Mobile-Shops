@@ -12,7 +12,7 @@ namespace Elsha3er_Services.Abstractions
         Task<IEnumerable<CableResultDto>> GetAllCablesAsync();
 
         Task<CableResultDto> GetCableById(int id);
-        //Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name);
+        Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name);
         Task CreateCableAsync(AddCableResultDto cableDto);
         Task UpdateCableAsync( CableResultDto cableDto);
         Task DeleteCableAsync(int id);

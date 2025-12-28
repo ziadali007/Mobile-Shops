@@ -1,29 +1,44 @@
 ﻿@using Shared.UI
 @model CreateProductDto
+<link rel="stylesheet" href="~/css/Create.css" />
 
-<h2>Create Product</h2>
+<div class="create-page-wrapper">
+    <div class="form-card">
+        <div class="form-header">
+            <h2>Add New Product</h2>
+            <p class="text-muted">Fill in the details below to add a product to the inventory.</p>
+        </div>
 
-<form asp-action="Create" method="post">
-    <div class="mb-3">
-        <label>Name</label>
-        <input class="form-control" name="Name" required />
+        <form asp-action="Create" method="post">
+            <div class="form-group-custom">
+                <label>Product Name</label>
+                <input class="form-control" name="Name" placeholder="e.g. iPhone 17 Pro" required autofocus />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group-custom">
+                        <label>Quantity</label>
+                        <input class="form-control" name="Quantity" type="number" placeholder="0" required />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group-custom">
+                        <label>Current Price ($)</label>
+                        <input class="form-control" name="Price" type="number" step="0.01" placeholder="0.00" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group-custom">
+                <label>Original Price (Cost)</label>
+                <input class="form-control" name="OriginalPrice" type="number" step="0.01" placeholder="0.00" required />
+            </div>
+
+            <div class="button-row">
+                <button type="submit" class="btn btn-primary btn-xl">Create Product</button>
+                <a asp-action="Index" class="btn btn-outline-secondary btn-xl">Cancel</a>
+            </div>
+        </form>
     </div>
-
-    <div class="mb-3">
-        <label>Quantity</label>
-        <input class="form-control" name="Quantity" type="number" required />
-    </div>
-
-    <div class="mb-3">
-        <label>Price</label>
-        <input class="form-control" name="Price" type="number" step="0.01" required />
-    </div>
-
-    <div class="mb-3">
-        <label>Original Price</label>
-        <input class="form-control" name="OriginalPrice" type="number" step="0.01" required />
-    </div>
-
-    <button class="btn btn-primary">Create</button>
-    <a asp-action="Index" class="btn btn-secondary">Back</a>
-</form>
+</div>

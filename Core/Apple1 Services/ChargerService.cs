@@ -27,16 +27,16 @@ namespace Apple1_Services
             var result = mapper.Map<ChargerResultDto>(charger);
             return result;
         }
-        //public async Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name)
-        //{
-        //    name = name.Replace(" ", " ").ToLower();
-        //    var charger = await unitOfWork.GetRepository<Charger>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().ToLower().Contains(name));
-        //    if (charger == null) throw new ChargerNotFoundException("Charger Not Found");
-        //    var result = mapper.Map<IEnumerable<ChargerResultDto>>(charger);
-        //    return result;
-        //}
+        public async Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var charger = await unitOfWork.GetRepository<Charger>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().ToLower().Contains(name));
+            if (charger == null) throw new ChargerNotFoundException("Charger Not Found");
+            var result = mapper.Map<IEnumerable<ChargerResultDto>>(charger);
+            return result;
+        }
         public async Task CreateChargerAsync(AddChargerResultDto chargerDto)
         {
             var charger = mapper.Map<Charger>(chargerDto);

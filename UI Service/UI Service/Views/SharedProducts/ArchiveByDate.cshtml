@@ -1,47 +1,53 @@
 ﻿@using Shared.UI
-
 @model IEnumerable<ArchiveItemDto>
 
-<h2 class="mb-3">Products</h2>
+<link rel="stylesheet" href="~/css/ArchiveByDate.css" />
 
-<div class="mb-3">
-    <a class="btn btn-primary" asp-action="Create">Create New Product</a>
+<div class="container-fluid">
+  
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info p-5 fs-3 text-center">
+            No archived items found.
+        </div>
+       
+    }
+    else
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-bordered table-striped table-hover big-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Original Price</th>
+                        <th>Sale Price</th>
+                        <th>Total</th>
+                        <th style="min-width: 200px;">Notes</th>
+                        <th>Archived Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold">@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td class="text-muted">@(((decimal)item.OriginalPrice).ToString("C"))</td>
+                            <td class="text-primary fw-bold">@item.Price.ToString("C")</td>
+                            <td class="fw-bold text-success">@item.Total.ToString("C")</td>
+                            <td class="text-start small">@(string.IsNullOrEmpty(item.Notes) ? "-" : item.Notes)</td>
+                            <td>@item.ArchivedDate.ToString("yyyy-MM-dd HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+      <div>
+            <div class="text-center">
+                <a asp-action="Index" class="btn btn-secondary btn-lg">Back</a>
+            </div>
+      </div>
+    }
 </div>
-
-@if (!Model.Any())
-{
-    <div class="alert alert-info">
-        No Sales available.
-    </div>
-}
-else
-{
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Original Price</th>
-                <th>Price</th>
-                <th>Total</th>
-                <th>Notes</th>
-                <th>Archived Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.ProductName</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.OriginalPrice</td>
-                    <td>@item.Price</td>
-                    <td>@item.Total</td>
-                    <td>@item.Notes</td>
-                    <td>@item.ArchivedDate</td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-}

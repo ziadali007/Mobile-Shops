@@ -27,16 +27,16 @@ namespace Apple1_Services
             var result = mapper.Map<HeadPhoneResultDto>(headphone);
             return result;
         }
-        //public async Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name)
-        //{
-        //    name = name.Replace(" ", " ").ToLower();
-        //    var headPhone = await unitOfWork.GetRepository<HeadPhone>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().ToLower().Contains(name));
-        //    if (headPhone == null) throw new HeadPhoneNotFoundException("HeadPhone Not Found");
-        //    var result = mapper.Map<IEnumerable<HeadPhoneResultDto>>(headPhone);
-        //    return result;
-        //}
+        public async Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var headPhone = await unitOfWork.GetRepository<HeadPhone>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().ToLower().Contains(name));
+            if (headPhone == null) throw new HeadPhoneNotFoundException("HeadPhone Not Found");
+            var result = mapper.Map<IEnumerable<HeadPhoneResultDto>>(headPhone);
+            return result;
+        }
 
         public async Task CreateHeadPhonesAsync(AddHeadPhoneResultDto headPhonesDto)
         {

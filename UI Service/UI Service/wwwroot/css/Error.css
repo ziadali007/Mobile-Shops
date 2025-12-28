@@ -1,0 +1,49 @@
+﻿/* Center the error card */
+.error-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+/* Glassmorphism Error Card */
+.error-container {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Request ID highlighting */
+.request-id-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 15px 0;
+}
+
+/* Fix text colors for paragraphs */
+.error-container p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* Title colors */
+.text-danger {
+    color: #ff4d4d !important; /* Brighter red for dark backgrounds */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.dev-mode-notice {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}

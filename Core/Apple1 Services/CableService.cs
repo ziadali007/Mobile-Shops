@@ -28,16 +28,16 @@ namespace Apple1_Services
             var result = mapper.Map<CableResultDto>(cable);
             return result;
         }
-        //public async Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name)
-        //{
-        //    name = name.Replace(" ", " ").ToLower();
-        //    var cable = await unitOfWork.GetRepository<Cable>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().ToLower().Contains(name));
-        //    if (cable == null) throw new CableNotFoundException("Cable Not Found");
-        //    var result = mapper.Map<IEnumerable<CableResultDto>>(cable);
-        //    return result;
-        //}
+        public async Task<IEnumerable<CableResultDto>> GetCableByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var cable = await unitOfWork.GetRepository<Cable>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().ToLower().Contains(name));
+            if (cable == null) throw new CableNotFoundException("Cable Not Found");
+            var result = mapper.Map<IEnumerable<CableResultDto>>(cable);
+            return result;
+        }
 
         public async Task CreateCableAsync(AddCableResultDto cableDto)
         {

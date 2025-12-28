@@ -12,7 +12,7 @@ namespace Elsha3er_Services.Abstractions
 
         Task<HeadPhoneResultDto> GetHeadPhoneById(int id);
 
-        //Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name);
+        Task<IEnumerable<HeadPhoneResultDto>> GetHeadPhonesByNameAsync(string name);
         Task CreateHeadPhonesAsync(AddHeadPhoneResultDto headPhonesDto);
         Task UpdateHeadPhonesAsync( HeadPhoneResultDto headPhonesDto);
         Task DeleteHeadPhonesAsync(int id);

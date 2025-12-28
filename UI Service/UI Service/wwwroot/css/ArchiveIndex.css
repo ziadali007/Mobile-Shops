@@ -1,0 +1,74 @@
+﻿/* 1. Reduce container width and center it */
+.container-fluid-archive {
+    width: 85%; /* Reduced from 95% to look more balanced */
+    max-width: 1400px; /* Reduced from 1600px */
+    margin: 40px auto;
+    background: transparent !important;
+}
+
+/* 2. Header styling - White with shadow */
+h2 {
+    font-size: 2.5rem; /* Slightly smaller for better fit */
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+}
+
+/* 3. Filter Section Styling - Transparent Glass */
+.filter-card {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+    .filter-card .form-control-lg {
+        padding: 12px;
+        font-size: 1.2rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+    }
+
+/* 4. Archive Table Styling - Transparent */
+.archive-table {
+    background-color: transparent !important;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    .archive-table th {
+        /* Transparent dark header */
+        background-color: rgba(0, 0, 0, 0.4) !important;
+        color: white !important;
+        font-size: 1.2rem;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .archive-table td {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(5px);
+        color: white !important;
+        font-size: 1.1rem;
+        padding: 15px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Table Hover Effect */
+    .archive-table tbody tr:hover td {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        transition: background 0.2s ease;
+    }
+
+/* Currency formatting */
+.text-success {
+    color: #28a745 !important;
+    font-weight: bold;
+}

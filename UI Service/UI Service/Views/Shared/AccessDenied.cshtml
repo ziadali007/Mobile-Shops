@@ -1,0 +1,82 @@
+﻿{
+    ViewData ["Title"] = "Access Denied";
+}
+
+<div class="secure-error-wrapper" >
+<div class="secure-card" >
+<div class="lock-icon" >
+<i class="bi bi-shield-lock" > </i > <span style="font-size: 4rem;" > 🔒</span >
+</div >
+
+<h1 class="text-white fw-bold" > Access Denied</h1 >
+<p class="text-white-50 fs-5" >
+You do not have the required permissions to access this secure area.
+</p >
+
+<div class="security-notice" >
+<p > This attempt has been logged for security purposes. If you believe this is an error, please contact your System Administrator.</p >
+</div >
+
+<div class="d-flex gap-3 justify-content-center mt-4" >
+<a asp-controller="Auth" asp-action="Login" class="btn btn-primary btn-lg px-4" >
+Back to Home
+</a >
+
+</div >
+</div >
+</div >
+
+<style >
+.secure-error-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.secure-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 50px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.lock-icon {
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.security-notice {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #ffc107; /* Warning color for security text */
+}
+
+@@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+</style >

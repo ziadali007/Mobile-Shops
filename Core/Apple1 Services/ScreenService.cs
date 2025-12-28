@@ -28,16 +28,16 @@ namespace Apple1_Services
             var result = mapper.Map<ScreenResultDto>(screen);
             return result;
         }
-        //public async Task<IEnumerable<ScreenResultDto>> GetScreenByNameAsync(string name)
-        //{
-        //    name = name.Replace(" ", " ").ToLower();
-        //    var screen = await unitOfWork.GetRepository<Screen>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().Contains(name));
-        //    if (screen == null) throw new ScreenNotFoundException("Screen Not Found");
-        //    var result = mapper.Map<IEnumerable<ScreenResultDto>>(screen);
-        //    return result;
-        //}
+        public async Task<IEnumerable<ScreenResultDto>> GetScreenByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var screen = await unitOfWork.GetRepository<Screen>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().Contains(name));
+            if (screen == null) throw new ScreenNotFoundException("Screen Not Found");
+            var result = mapper.Map<IEnumerable<ScreenResultDto>>(screen);
+            return result;
+        }
 
         public async Task CreateScreenAsync(AddScreenResultDto screenDto)
         {

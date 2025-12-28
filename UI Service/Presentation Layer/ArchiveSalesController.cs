@@ -48,8 +48,8 @@ namespace Presentation_Layer
 
            if(password != _adminPassword)
            {
-                return Forbid("Invalid Admin Password");
-           }
+                return View("~/Views/Shared/AccessDenied.cshtml");
+            }
 
             var response = await _shopService.GetArchivedSalesAsync(_adminPassword);
 
@@ -82,7 +82,7 @@ namespace Presentation_Layer
             var password = GetAdminPassword();
             if (password != _adminPassword)
             {
-                return Forbid("Invalid Admin Password");
+                return View("~/Views/Shared/Error.cshtml");
             }
 
             var response = await _shopService.GetArchiveByDate(password, date);

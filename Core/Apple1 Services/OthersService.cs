@@ -27,16 +27,16 @@ namespace Apple1_Services
             var result = mapper.Map<OthersResultDto>(other);
             return result;
         }
-        //public async Task<IEnumerable<OthersResultDto>> GetOtherByNameAsync(string name)
-        //{
-        //    name = name.Replace(" ", " ").ToLower();
-        //    var other = await unitOfWork.GetRepository<Others>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().ToLower().Contains(name));
-        //    if (other == null) throw new OthersNotFoundException("Other Not Found");
-        //    var result = mapper.Map<IEnumerable<OthersResultDto>>(other);
-        //    return result;
-        //}
+        public async Task<IEnumerable<OthersResultDto>> GetOtherByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var other = await unitOfWork.GetRepository<Others>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().ToLower().Contains(name));
+            if (other == null) throw new OthersNotFoundException("Other Not Found");
+            var result = mapper.Map<IEnumerable<OthersResultDto>>(other);
+            return result;
+        }
         public async Task CreateOtherAsync(AddOthersResultDto otherDto)
         {
            var other = mapper.Map<Others>(otherDto);

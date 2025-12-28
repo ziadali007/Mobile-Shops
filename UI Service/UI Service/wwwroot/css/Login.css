@@ -1,0 +1,141 @@
+﻿/* Centers the box on the screen */
+/* Centers the box horizontally, but pushes it toward the top */
+/* Centers the box horizontally, and places it in the upper section */
+/* Apply the Background Photo to the Wrapper */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    min-height: 100vh;
+    /* Use your background image here */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/Login.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* Glassmorphism Login Card */
+.login-card {
+    /* Semi-transparent white + blur */
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 420px;
+    color: white; /* Make all text white */
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Titles and Labels */
+.login-header h2 {
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.login-header p, .login-footer small {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.form-group-compact label {
+    color: white !important;
+    font-size: 1rem;
+}
+
+/* Inputs - Semi-solid for focus */
+.form-group-compact .form-control {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: none;
+    height: 45px;
+    color: #333 !important;
+}
+
+    .form-group-compact .form-control:focus {
+        background: #ffffff !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.4);
+    }
+
+/* Login Button */
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    height: 50px;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+    }
+
+.login-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+    .login-header h2 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+/* Form Controls */
+.form-group-compact {
+    margin-bottom: 18px;
+}
+
+    .form-group-compact label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        color: #495057;
+    }
+
+    .form-group-compact .form-control {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+    }
+
+        .form-group-compact .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+        }
+
+/* Button & Footer */
+.btn-primary {
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 6px;
+}
+
+.login-footer {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
