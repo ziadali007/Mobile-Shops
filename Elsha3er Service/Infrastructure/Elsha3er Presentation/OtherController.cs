@@ -29,7 +29,7 @@ namespace Elsha3er_Presentation
             return Ok(others);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOtherById(int id)
         {
             var other = await serviceManager.OthersService.GetOtherById(id);
@@ -37,13 +37,13 @@ namespace Elsha3er_Presentation
             return Ok(other);
         }
 
-        //[HttpGet("{Name}")]
-        //public async Task<IActionResult> GetOtherByName(string name)
-        //{
-        //    var other = await serviceManager.OthersService.GetOtherByNameAsync(name);
-        //    if (other == null) return NotFound($"Other item with name '{name}' not found.");
-        //    return Ok(other);
-        //}
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetOtherByName(string name)
+        {
+            var other = await serviceManager.OthersService.GetOtherByNameAsync(name);
+            if (other == null) return NotFound($"Other item with name '{name}' not found.");
+            return Ok(other);
+        }
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateOther([FromBody] AddOthersResultDto otherDto, [FromHeader(Name = "Admin-Password")] string password)

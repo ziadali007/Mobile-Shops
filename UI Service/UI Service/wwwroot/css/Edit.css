@@ -1,0 +1,88 @@
+﻿/* Container to center everything on the screen */
+.edit-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh; /* Use full height */
+    padding-top: 80px; /* Pushes form down from transparent navbar */
+    background: transparent !important; /* Let body background show through */
+}
+
+/* The "Card" for the form - Reduced Width & Transparent */
+.form-container {
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 550px; /* Reduced from 700px to make it slimmer */
+    color: white; /* Text readability */
+}
+
+    /* Big Title */
+    .form-container h2 {
+        font-size: 2.2rem; /* Slightly smaller for slim card */
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: white !important;
+        border-bottom: 3px solid #ffc107;
+        padding-bottom: 10px;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+/* Large Inputs and Labels */
+.form-group-custom {
+    margin-bottom: 25px;
+}
+
+    .form-group-custom label {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.9) !important; /* Light labels */
+    }
+
+    /* Make inputs slightly solid so users can see where to type */
+    .form-group-custom .form-control {
+        height: auto;
+        padding: 12px 18px;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        color: #333 !important;
+    }
+
+        .form-group-custom .form-control:focus {
+            border-color: #ffc107 !important;
+            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.3);
+            background: #ffffff !important;
+        }
+
+/* Button Group Adjustment */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn-lg-custom {
+    flex: 1;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+/* Red feedback when clicking warning button (optional) */
+.btn-warning:active {
+    background-color: #dc3545 !important;
+    color: white !important;
+    transform: scale(0.98);
+}

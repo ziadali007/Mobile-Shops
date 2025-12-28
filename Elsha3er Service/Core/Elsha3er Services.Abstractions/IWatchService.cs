@@ -12,7 +12,7 @@ namespace Elsha3er_Services.Abstractions
         Task<IEnumerable<WatchResultDto>> GetAllWatches();
         Task<WatchResultDto> GetWatchById(int id);
 
-        //Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name);
+        Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name);
 
         Task CreateWatchAsync(AddWatchResultDto watchDto);
 

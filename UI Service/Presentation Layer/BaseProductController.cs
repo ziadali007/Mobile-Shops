@@ -45,14 +45,23 @@ namespace Presentation_Layer
             return RedirectToAction("EnterPassword", "Admin", new { returnUrl });
         }
 
-        public virtual async Task<IActionResult> Index()
+        public virtual async Task<IActionResult> Index(string? search)
         {
             if (string.IsNullOrEmpty(_productEndpoint))
                 return BadRequest("Product endpoint is required");
 
             ViewBag.SaleController = SaleController;
+            HttpResponseMessage response;
 
-            var response = await _shopService.GetAllAsync(_productEndpoint);
+            if (search is not null)
+            {
+                 response = await _shopService.GetByNameAsync(_productEndpoint, search);
+            }
+            else
+            {
+                 response = await _shopService.GetAllAsync(_productEndpoint);
+
+            }
 
             if (!response.IsSuccessStatusCode)
             {

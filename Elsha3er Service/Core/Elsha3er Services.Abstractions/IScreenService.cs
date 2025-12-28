@@ -12,7 +12,7 @@ namespace Elsha3er_Services.Abstractions
         Task<IEnumerable<ScreenResultDto>> GetAllScreensAsync();
         Task<ScreenResultDto> GetScreenById(int id);
 
-        //Task<IEnumerable<ScreenResultDto>> GetScreenByNameAsync(string name);
+        Task<IEnumerable<ScreenResultDto>> GetScreenByNameAsync(string name);
         Task CreateScreenAsync(AddScreenResultDto screenDto);
         Task UpdateScreenAsync(ScreenResultDto screenDto);
         Task DeleteScreenAsync(int id);

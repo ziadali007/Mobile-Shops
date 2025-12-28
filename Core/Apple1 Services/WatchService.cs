@@ -30,16 +30,16 @@ namespace Apple1_Services
             return result;
         }
 
-        //public async Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name)
-        //{
-        //    name = name.Replace(" ", " ").ToLower();
-        //    var watches = await unitOfWork.GetRepository<Watch>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().ToLower().Contains(name));
-        //    if (watches == null) throw new WatchesNotFoundException("There Is No Watches");
-        //    var result = mapper.Map<IEnumerable<WatchResultDto>> (watches);
-        //    return result;
-        //}
+        public async Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var watches = await unitOfWork.GetRepository<Watch>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().ToLower().Contains(name));
+            if (watches == null) throw new WatchesNotFoundException("There Is No Watches");
+            var result = mapper.Map<IEnumerable<WatchResultDto>>(watches);
+            return result;
+        }
         public async Task CreateWatchAsync(AddWatchResultDto watchDto)
         {
             var watch= mapper.Map<Watch>(watchDto);

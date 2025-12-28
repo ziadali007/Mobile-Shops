@@ -1,0 +1,73 @@
+﻿/* Normal Card Styling - NOW TRANSPARENT */
+.product-card-normal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Glass Effect: 15% white opacity and blur */
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 10px;
+    border-radius: 12px;
+    text-decoration: none !important;
+    /* Text color changed to white for transparency contrast */
+    color: #ffffff !important;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    height: 100%;
+}
+
+/* Icons */
+.card-icon-sm {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: white !important;
+}
+
+/* Label text */
+.card-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+/* Hover effect for Transparent Cards */
+.product-card-normal:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Specific Style for Archive - Hover stays gray-ish */
+.archive-style:hover {
+    border-color: #adb5bd !important;
+    color: #ffffff !important;
+}
+
+/* Wider Sale Card - Transparent Blue */
+.sale-style-wide {
+    /* 70% blue opacity to keep it looking "special" but still transparent */
+    background-color: rgba(13, 110, 253, 0.7) !important;
+    color: white !important;
+    flex-direction: row !important;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .sale-style-wide:hover {
+        background-color: rgba(13, 110, 253, 0.9) !important;
+        transform: scale(1.02) translateY(-5px);
+    }
+
+    .sale-style-wide .card-icon-sm,
+    .sale-style-wide .card-label {
+        color: white !important;
+        margin: 0;
+    }

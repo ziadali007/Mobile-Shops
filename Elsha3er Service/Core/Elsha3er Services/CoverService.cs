@@ -30,20 +30,20 @@ namespace Elsha3er_Services
             var result = mapper.Map<CoverResultDto>(cover);
             return result;
         }
-        //public async Task<IEnumerable<CoverResultDto>> GetCoverByNameAsync(string name)
-        //{
-        //    name=name.Replace(" ", " ").ToLower();
-        //    var cover = await unitOfWork.GetRepository<Cover>()
-        //                        .GetAsyncCollection(c => c.Name.Replace(" ", "")
-        //                                                            .ToLower().ToLower().Contains(name));
+        public async Task<IEnumerable<CoverResultDto>> GetCoverByNameAsync(string name)
+        {
+            name = name.Replace(" ", " ").ToLower();
+            var cover = await unitOfWork.GetRepository<Cover>()
+                                .GetAsyncCollection(c => c.Name.Replace(" ", "")
+                                                                    .ToLower().ToLower().Contains(name));
 
-        //    if (cover == null) throw new CoverNotFoundException("Cover Not Found");
+            if (cover == null) throw new CoverNotFoundException("Cover Not Found");
 
-        //    var result = mapper.Map<IEnumerable<CoverResultDto>>(cover);
+            var result = mapper.Map<IEnumerable<CoverResultDto>>(cover);
 
-        //    return result;
+            return result;
 
-        //}
+        }
 
         public async Task CreateCoverAsync(AddCoverResultDto coverDto)
         {

@@ -1,50 +1,59 @@
 ﻿@using Shared.UI
 @model IEnumerable<ArchiveDto>
 
-<h2 class="mb-3">Sales Archive</h2>
+<link rel="stylesheet" href="~/css/ArchiveIndex.css" />
 
-<!-- DATE FILTER -->
-<form method="get" asp-action="ArchiveByDate" class="row g-3 mb-4">
-    <div class="col-auto">
-        <label class="form-label fw-bold">Select Date</label>
-        <input type="date"
-               name="date"
-               class="form-control"
-               required />
+<div class="container-fluid">
+    <div class="header-wrapper mb-4">
+        <h2 class="display-5 fw-bold">Sales Archive</h2>
     </div>
 
-    <div class="col-auto align-self-end">
-        <button type="submit" class="btn btn-primary">
-            Filter
-        </button>
-    </div>
-</form>
+    <div class="filter-card mb-5">
+        <form method="get" asp-action="ArchiveByDate" class="row g-3 align-items-end">
+            <div class="col-md-10">
+                <label class="form-label fs-4 fw-bold">Filter by Date</label>
+                <input type="date"
+                       name="date"
+                       class="form-control form-control-lg"
+                       required />
+            </div>
 
-@if (!Model.Any())
-{
-    <div class="alert alert-info">
-        No Sales available.
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                    Filter
+                </button>
+            </div>
+        </form>
     </div>
-}
-else
-{
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Total Amount</th>
-                <th>Total Quantity</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.TotalAmount</td>
-                    <td>@item.TotalQuantity</td>
-                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info p-5 fs-3 text-center">
+            No Sales available for this period.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover archive-table">
+                <thead>
+                    <tr>
+                        <th>Total Amount</th>
+                        <th>Total Quantity</th>
+                        <th>Archive Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold text-success">$@item.TotalAmount</td>
+                            <td>@item.TotalQuantity</td>
+                            <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

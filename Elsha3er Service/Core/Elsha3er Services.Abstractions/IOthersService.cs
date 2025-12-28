@@ -13,7 +13,7 @@ namespace Elsha3er_Services.Abstractions
 
         Task<OthersResultDto> GetOtherById(int id);
 
-        //Task<IEnumerable<OthersResultDto>> GetOtherByNameAsync(string name);
+        Task<IEnumerable<OthersResultDto>> GetOtherByNameAsync(string name);
         Task CreateOtherAsync(AddOthersResultDto otherDto);
         Task UpdateOtherAsync(OthersResultDto otherDto);
         Task DeleteOtherAsync(int id);

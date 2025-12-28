@@ -12,7 +12,7 @@ namespace Apple1_Services.Abstractions
         Task<IEnumerable<WatchResultDto>> GetAllWatches();
         Task<WatchResultDto> GetWatchByIdAsync(int id);
 
-        //Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name);
+        Task<IEnumerable<WatchResultDto>> GetWatchByNameAsync(string name);
 
         Task CreateWatchAsync(AddWatchResultDto watchDto);
 

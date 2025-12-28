@@ -30,7 +30,7 @@ namespace Elsha3er_Presentation
             return Ok(headPhones);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetHeadPhoneById(int id)
         {
             var headPhone = await serviceManager.HeadPhoneService.GetHeadPhoneById(id);
@@ -38,13 +38,13 @@ namespace Elsha3er_Presentation
             return Ok(headPhone);
         }
 
-        //[HttpGet("{Name}")]
-        //public async Task<IActionResult> GetHeadPhoneByName(string name)
-        //{
-        //    var headPhone = await serviceManager.HeadPhoneService.GetHeadPhonesByNameAsync(name);
-        //    if (headPhone == null) return NotFound($"Head phone with name '{name}' not found.");
-        //    return Ok(headPhone);
-        //}
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetHeadPhoneByName(string name)
+        {
+            var headPhone = await serviceManager.HeadPhoneService.GetHeadPhonesByNameAsync(name);
+            if (headPhone == null) return NotFound($"Head phone with name '{name}' not found.");
+            return Ok(headPhone);
+        }
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateHeadPhone([FromBody] AddHeadPhoneResultDto headPhoneDto, [FromHeader(Name = "Admin-Password")] string password)

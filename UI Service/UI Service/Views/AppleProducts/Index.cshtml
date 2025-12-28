@@ -1,31 +1,74 @@
 ﻿@{
     ViewData["Title"] = "Apple Products";
 }
+<link rel="stylesheet" href="~/css/AppleProducts.css" />
 
-<h2>Apple Products</h2>
 
-<div class="row">
-    <div class="col-md-3">
-        <a asp-controller="Apple1Cover" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Covers
-        </a>
-    </div>
+<div class="container py-5 mt-5">
+    <h2 class="text-center fw-bold mb-5">Apple Departments</h2>
 
-    <div class="col-md-3">
-        <a asp-controller="Apple1Screen" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Screens
-        </a>
-    </div>
+    <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1Cover" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">📱</div>
+                <div class="card-label">Covers</div>
+            </a>
+        </div>
 
-    <div class="col-md-3">
-        <a asp-controller="Apple1Charger" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Chargers
-        </a>
-    </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1Screen" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">📺</div>
+                <div class="card-label">Screens</div>
+            </a>
+        </div>
 
-    <div class="col-md-3">
-        <a asp-controller="Apple1Headphone" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Headphones
-        </a>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1Charger" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">🔌</div>
+                <div class="card-label">Chargers</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1Cable" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">🏷️</div>
+                <div class="card-label">Cables</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1HeadPhone" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">🎧</div>
+                <div class="card-label">Headphones</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1Watch" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">⌚</div>
+                <div class="card-label">Watches</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Apple1Other" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">📦</div>
+                <div class="card-label">Others</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="AppleArchiveSales" asp-action="Index" class="product-card-normal archive-style">
+                <div class="card-icon-sm">📂</div>
+                <div class="card-label">Archives</div>
+            </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-controller="AppleSaleShop" asp-action="Index" class="product-card-normal sale-style-wide">
+                <div class="card-icon-sm">💰</div>
+                <div class="card-label">Go To Sales</div>
+            </a>
+        </div>
     </div>
 </div>

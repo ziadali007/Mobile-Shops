@@ -1,31 +1,73 @@
 ﻿@{
     ViewData["Title"] = "Elsha3er Products";
 }
+<link rel="stylesheet" href="~/css/Elsha3erProducts.css" />
 
-<h2>Elsha3er Products</h2>
+<div class="container py-4">
+    <h2 class="text-center fw-bold mb-4">Elsha3er Departments</h2>
 
-<div class="row">
-    <div class="col-md-3">
-        <a asp-controller="Elsha3erCover" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Covers
-        </a>
-    </div>
+    <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erCover" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">📱</div>
+                <div class="card-label">Covers</div>
+            </a>
+        </div>
 
-    <div class="col-md-3">
-        <a asp-controller="Elsha3erScreen" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Screens
-        </a>
-    </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erScreen" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">📺</div>
+                <div class="card-label">Screens</div>
+            </a>
+        </div>
 
-    <div class="col-md-3">
-        <a asp-controller="Elsha3erCharger" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Chargers
-        </a>
-    </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erCharger" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">🔌</div>
+                <div class="card-label">Chargers</div>
+            </a>
+        </div>
 
-    <div class="col-md-3">
-        <a asp-controller="Elsha3erHeadPhone" asp-action="Index" class="btn btn-primary w-100 mb-2">
-            Headphones
-        </a>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erCable" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">🏷️</div>
+                <div class="card-label">Cables</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erHeadPhone" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">🎧</div>
+                <div class="card-label">Headphones</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erWatch" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">⌚</div>
+                <div class="card-label">Watches</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erOther" asp-action="Index" class="product-card-normal">
+                <div class="card-icon-sm">📦</div>
+                <div class="card-label">Others</div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <a asp-controller="Elsha3erArchiveSales" asp-action="Index" class="product-card-normal archive-style">
+                <div class="card-icon-sm">📂</div>
+                <div class="card-label">Archives</div>
+            </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-controller="Elsha3erSaleShop" asp-action="Index" class="product-card-normal sale-style-wide">
+                <div class="card-icon-sm">💰</div>
+                <div class="card-label">Go To Sales</div>
+            </a>
+        </div>
     </div>
 </div>

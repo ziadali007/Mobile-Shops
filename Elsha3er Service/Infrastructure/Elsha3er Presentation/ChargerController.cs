@@ -28,7 +28,7 @@ namespace Elsha3er_Presentation
             if (chargers == null || !chargers.Any()) return NotFound("No chargers found.");
             return Ok(chargers);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetChargerById(int id)
         {
             var charger = await serviceManager.ChargerService.GetChargerById(id);
@@ -36,13 +36,13 @@ namespace Elsha3er_Presentation
             return Ok(charger);
         }
 
-        //[HttpGet("{Name}")]
-        //public async Task<IActionResult> GetChargerByName(string name)
-        //{
-        //    var charger = await serviceManager.ChargerService.GetChargerByNameAsync(name);
-        //    if (charger == null) return NotFound($"Charger with name '{name}' not found.");
-        //    return Ok(charger);
-        //}
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetChargerByName(string name)
+        {
+            var charger = await serviceManager.ChargerService.GetChargerByNameAsync(name);
+            if (charger == null) return NotFound($"Charger with name '{name}' not found.");
+            return Ok(charger);
+        }
 
         [HttpPost("protected")]
         public async Task<IActionResult> CreateCharger([FromBody] AddChargerResultDto chargerDto, [FromHeader(Name = "Admin-Password")] string password)

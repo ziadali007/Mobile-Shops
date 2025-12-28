@@ -1,25 +1,50 @@
 ﻿@{
     ViewData["Title"] = "Login";
+    Layout = null; // This removes the Navbar, Footer, and all global CSS
 }
 
-<h2>Login</h2>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-@if (ViewBag.Error != null)
-{
-    <p style="color:red">@ViewBag.Error</p>
-}
+<div class="login-wrapper">
+</div>
+<link rel="stylesheet" href="~/css/Login.css" />
 
-<form method="post">
-    <div>
-        <label>Email</label>
-        <input name="email" class="form-control" required />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Mobile Shop</title>
+</head>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Login</h2>
+            <p class="text-muted">Enter your credentials to access the system</p>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger py-2">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group-compact">
+                <label>Email Address</label>
+                <input name="email" class="form-control" placeholder="name@example.com" required autofocus />
+            </div>
+
+            <div class="form-group-compact">
+                <label>Password</label>
+                <input name="password" type="password" class="form-control" placeholder="••••••••" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3 py-2">Login</button>
+        </form>
+
+        <div class="login-footer mt-4">
+            <small class="text-muted">Secure Access Only</small>
+        </div>
     </div>
-
-    <div>
-        <label>Password</label>
-        <input name="password" type="password" class="form-control" required />
-    </div>
-
-    <br />
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</div>

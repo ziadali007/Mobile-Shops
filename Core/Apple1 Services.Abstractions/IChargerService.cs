@@ -12,7 +12,7 @@ namespace Apple1_Services.Abstractions
         Task<IEnumerable<ChargerResultDto>> GetAllChargersAsync();
         Task<ChargerResultDto> GetChargerByIdAsync(int id);
 
-        //Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name);
+        Task<IEnumerable<ChargerResultDto>> GetChargerByNameAsync(string name);
         Task CreateChargerAsync(AddChargerResultDto chargerDto);
         Task UpdateChargerAsync(ChargerResultDto chargerDto);
         Task DeleteChargerAsync(int id);
