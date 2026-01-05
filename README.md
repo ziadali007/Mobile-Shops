@@ -1,4 +1,5 @@
 📱 Mobile Shops System
+
 A microservices-based multi-shop system built with ASP.NET Core, designed to support two independent mobile shops with isolated data, centralized authentication, and scalable deployment using Docker.
 
 🧩 Project Overview
