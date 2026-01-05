@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Elsha3er Shared\Elsha3er_Shared.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Elsha3er Presistence\Elsha3er Presistence.csproj" />
     <ProjectReference Include="..\Elsha3er Domain\Elsha3er Domain.csproj" />
     <ProjectReference Include="..\Elsha3er Services.Abstractions\Elsha3er Services.Abstractions.csproj" />

@@ -1,0 +1,77 @@
+﻿services:
+  # --- Databases ---
+  apple1-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: apple1_sql_db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrongPassword123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - apple1_data:/var/opt/mssql # Persistent storage for Apple1
+
+  elsha3er-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: elsha3er_sql_db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrongPassword123!
+    ports:
+      - "1434:1433"
+    volumes:
+      - elsha3er_data:/var/opt/mssql # Persistent storage for Elsha3er
+
+  # --- Microservices ---
+  api-gateway:
+    build:
+      context: .
+      dockerfile: API Gateway Service/API-Gateway/Dockerfile
+    container_name: ocelot_gateway
+    ports:
+      - "5000:8080"
+    depends_on:
+      - apple1-service
+      - elsha3er-api
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: Auth Service/Auth Service/Dockerfile
+    container_name: auth_api
+    ports:
+      - "8083:8080"
+
+  ui-service:
+    build:
+      context: .
+      dockerfile: UI Service/UI Service/Dockerfile
+    container_name: mvc_ui
+    ports:
+      - "5001:8080"
+
+  apple1-service:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Changed: removed the subfolder prefix
+    container_name: apple1_api
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=apple1-db;Database=Apple1Db;User Id=sa;Password=YourStrongPassword123!;TrustServerCertificate=True
+    depends_on:
+      - apple1-db
+
+  elsha3er-api:
+    build:
+      context: .
+      dockerfile: Elsha3er Service/Dockerfile
+    container_name: elsha3er_api
+    environment:
+      # Use the SERVICE name 'elsha3er-db' as the server address
+      - ConnectionStrings__DefaultConnection=Server=elsha3er-db;Database=Elsha3erDb;User Id=sa;Password=YourStrongPassword123!;TrustServerCertificate=True
+    depends_on:
+      - elsha3er-db
+
+# Define the named volumes at the bottom
+volumes:
+  apple1_data:
+  elsha3er_data:

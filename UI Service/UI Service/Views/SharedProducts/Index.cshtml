@@ -22,7 +22,7 @@
         </button>
     </form>
 
-    @if (!Model.Any())
+    @if (Model == null || !Model.Any())
     {
         <div class="alert alert-info p-4 fs-5">
             No products available.
