@@ -12,11 +12,11 @@ namespace Elsha3er_Presentation
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OtherController : ControllerBase
+    public class OthersController : ControllerBase
     {
         private readonly string _adminPassword;
         private readonly IServiceManager serviceManager;
-        public OtherController(IOptions<AdminSettings> adminSettingsOptions, IServiceManager service)
+        public OthersController(IOptions<AdminSettings> adminSettingsOptions, IServiceManager service)
         {
             _adminPassword = adminSettingsOptions.Value.Password;
             serviceManager = service;

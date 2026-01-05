@@ -1,46 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>9731d86d-781f-4d16-bb6f-1cff6ae3ee66</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Apple1 Service\**" />
-    <Compile Remove="Core\**" />
-    <Compile Remove="Elsha3er  Shared\**" />
-    <Compile Remove="Infrastructure\**" />
-    <Compile Remove="Shared\**" />
-    <Content Remove="Apple1 Service\**" />
-    <Content Remove="Core\**" />
-    <Content Remove="Elsha3er  Shared\**" />
-    <Content Remove="Infrastructure\**" />
-    <Content Remove="Shared\**" />
-    <EmbeddedResource Remove="Apple1 Service\**" />
-    <EmbeddedResource Remove="Core\**" />
-    <EmbeddedResource Remove="Elsha3er  Shared\**" />
-    <EmbeddedResource Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Shared\**" />
-    <None Remove="Apple1 Service\**" />
-    <None Remove="Core\**" />
-    <None Remove="Elsha3er  Shared\**" />
-    <None Remove="Infrastructure\**" />
-    <None Remove="Shared\**" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Core\**" />
+	  <Compile Remove="Elsha3er Shared\**" />
+	  <Compile Remove="Infrastructure\**" />
+	  <Compile Remove="Shared\**" />
+	  <Content Remove="Core\**" />
+	  <Content Remove="Elsha3er Shared\**" />
+	  <Content Remove="Infrastructure\**" />
+	  <Content Remove="Shared\**" />
+	  <EmbeddedResource Remove="Core\**" />
+	  <EmbeddedResource Remove="Elsha3er Shared\**" />
+	  <EmbeddedResource Remove="Infrastructure\**" />
+	  <EmbeddedResource Remove="Shared\**" />
+	  <None Remove="Core\**" />
+	  <None Remove="Elsha3er Shared\**" />
+	  <None Remove="Infrastructure\**" />
+	  <None Remove="Shared\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.22">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.22">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.22" />
 
-  <ItemGroup>
-    <ProjectReference Include="Core\Elsha3er Services\Elsha3er Services.csproj" />
-    <ProjectReference Include="Infrastructure\Elsha3er Presentation\Elsha3er Presentation.csproj" />
-    <ProjectReference Include="Infrastructure\Elsha3er Presistence\Elsha3er Presistence.csproj" />
-  </ItemGroup>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="Core\Elsha3er Services\Elsha3er Services.csproj" />
+		<ProjectReference Include="Infrastructure\Elsha3er Presentation\Elsha3er Presentation.csproj" />
+		<ProjectReference Include="Infrastructure\Elsha3er Presistence\Elsha3er Presistence.csproj" />
+		<ProjectReference Include="Elsha3er Shared\Elsha3er_Shared.csproj" />
+	</ItemGroup>
 
 </Project>
