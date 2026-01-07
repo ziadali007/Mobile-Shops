@@ -26,6 +26,8 @@ Separate database per shop
 
 Dockerized services
 
+
+
 MobileShopsSystem/
 │
 ├── docker-compose.yml
@@ -60,6 +62,9 @@ MobileShopsSystem/
     ├── AuthDb/
     ├── ShopADb/
     └── ShopBDb/
+
+
+
 
 🔧 Technologies Used
 ASP.NET Core Web APIs
