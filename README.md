@@ -26,46 +26,6 @@ Separate database per shop
 
 Dockerized services
 
-
-
-MobileShopsSystem/
-│
-├── docker-compose.yml
-├── README.md
-│
-├── ApiGateway/
-│   └── Ocelot.ApiGateway/
-│       ├── ocelot.json
-│       └── Dockerfile
-│
-├── Services/
-│   ├── AuthService/
-│   │   └── Auth.API/
-│   │       └── Dockerfile
-│   │
-│   ├── ShopAService/
-│   │   └── ShopA.API/
-│   │       └── Dockerfile
-│   │
-│   └── ShopBService/
-│       └── ShopB.API/
-│           └── Dockerfile
-│
-├── UI/
-│   └── Mvc/
-│       └── Dockerfile
-│
-├── Shared/
-│   └── Common/
-│
-└── Databases/
-    ├── AuthDb/
-    ├── ShopADb/
-    └── ShopBDb/
-
-
-
-
 🔧 Technologies Used
 ASP.NET Core Web APIs
 
